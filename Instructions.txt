@@ -1,0 +1,9 @@
+Short explanation:
+
+The Demo QA and Cheese test are completed. The Orange is partially done.
+
+Test were created and run with Intellij and Junit on Google Chrome.
+
+Running the test requires local drivers to be present.
+
+I could not get the test to run from command line, even though Maven finds all 3 of them.

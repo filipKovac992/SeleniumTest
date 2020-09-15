@@ -15,6 +15,7 @@ public class DemoqaInteractionsPage {
 
     public WebDriver driver;
 
+    //element locators
     @FindBy(xpath = "//div[@id='app']/div[@class='body-height']/div[@class='container playgound-body']/div[@class='row']//div[@class='accordion']/div[5]/div/ul[@class='menu-list']/li[4]")
     WebElement droppableLink;
 
@@ -41,11 +42,13 @@ public class DemoqaInteractionsPage {
         PageFactory.initElements(driver, this);
     }
 
+    //opens the "Droppable" link
     public void clickOnDroppable() {
         droppableLink.click();
 
     }
 
+    //used to drag the  “Drag me to my target” box into the “Drop here” box
     public void dragBox() {
         Actions builder = new Actions(driver);
 
@@ -57,14 +60,18 @@ public class DemoqaInteractionsPage {
         dragAndDrop.perform();
     }
 
+
+    //prints the text from "Drop here" box and inserts new line in the text
     public void getText() {
         System.out.print(droppableBox.getText() + "\n");
     }
 
+    //opens the "Widgets" link
     public void clickOnWidgets() {
         widgetsMenu.click();
     }
 
+    //moves to the element and clicks on "Tool Tips" link
     public void clickOnToolTips() {
         Actions actions = new Actions(driver);
         actions.moveToElement(toolTipsSection);
@@ -72,6 +79,7 @@ public class DemoqaInteractionsPage {
         toolTipsSection.click();
     }
 
+    //moves to the "Input" element
     public void moveToInput() {
         Actions actions = new Actions(driver);
         actions.moveToElement(toolTipsInput).perform();
@@ -79,6 +87,7 @@ public class DemoqaInteractionsPage {
 
     }
 
+    //hovers over the "Input" element and delays the fade out of the pop-up tooltip
     public void printHoverText() throws InterruptedException {
         Thread.sleep(2000);
         WebElement tooltip = driver.findElement(By.xpath("//*[@id=\"textFieldToolTip\"]"));
@@ -86,12 +95,11 @@ public class DemoqaInteractionsPage {
 
     }
 
+    //used for assigning unique name to the screenshot
     public String timestamp() {
         return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
     }
-//        proper method functioning requires setting up a valid destination argument for Screenshot path
-//        alongside with
-//        folder named "screenshots"
+
 
     public void screenShot() throws IOException, InterruptedException {     //Take screenshot and save to file
         File scr=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);    //Destination where to store screenshot
